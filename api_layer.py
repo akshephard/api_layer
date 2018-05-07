@@ -48,15 +48,10 @@ for dictionary in json_data['history']['observations']:
      # Adding timestamp to metrics dict\n",
      # For UTC timestamp, pass dictionary['utcdate'] to get_timestamp()\n",
      d['timestamp'] = get_timestamp(dictionary['date'])
-     # Convert to dataframe
-     #print(d['timestamp'])
-     #df = df.append(pd.Series(d), ignore_index=True)
-#df.set_index('timestamp', inplace=True)
-#print(d['tempi'])
+
 test_session = requests.Session()
 print str(int(time.time()))
 for key in d:
-    #payload = payload + "Fake_Meter_type=Meter_" + str(j) + " random_Float_value=" + str(temperature)+str(int(time.time()))
     payload = "testDB " +str(key) +"=" + str(d[key]) + " " + str(int(time.time()))
     print(payload)
     response = test_session.request(
@@ -81,35 +76,3 @@ response = test_session.request(
     )
 print(response.text)
 print(response.status_code)
-    #print(printStr)
-    #print(key)
-    #print(d[key])
-'''
-loaded_json = json.load(json_data)
-for x in json_data:
-	print("%s: %d" % (x, json_data[x]))
-
-'''
-'''
-for data_field in json_data:
-    print(data_field['version'])
-'''
-
-#print(json.dumps(res.json(), indent=2))
-
-'''
-res = req.get(URL)
-json_data = res.json()
-'''
-'''
-df = pd.DataFrame()
-for dictionary in json_data['history']['observations']:
-     # d contains all metrics except timestamp \n",
-     d = dict(itertools.islice(dictionary.items(), 2, None))
-     # Adding timestamp to metrics dict\n",
-     # For UTC timestamp, pass dictionary['utcdate'] to get_timestamp()\n",
-     d['timestamp'] = get_timestamp(dictionary['date'])
-     # Convert to dataframe
-     df = df.append(pd.Series(d), ignore_index=True)
-df.set_index('timestamp', inplace=True)
-'''
