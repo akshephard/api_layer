@@ -39,7 +39,7 @@ config.read('/api_config_files/config.ini')
 
 
 
-URL = ['API_CREDZ']['API_URL']
+URL = config['API_CREDZ']['API_URL']
 res = req.get(URL)
 json_data = res.json()
 for dictionary in json_data['history']['observations']:
