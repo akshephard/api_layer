@@ -1,13 +1,11 @@
 import json
 import time
 import itertools
-#import pandas as pd
 import requests as req
 import requests
 from datetime import datetime
 import configparser
-#from influxdb import InfluxDBClient
-#from influxdb import DataFrameClient
+
 
 def get_timestamp(d):
     # Hardcoded seconds to \"00\" since the json does not contain \"seconds\" field
@@ -35,7 +33,8 @@ headers = {
     'Accept': 'text/plain'
 }
 method = 'POST'
-
+config = configparser.ConfigParser()
+config.read('/api_config_files/config.ini')
 
 
 
@@ -99,7 +98,6 @@ for data_field in json_data:
 #print(json.dumps(res.json(), indent=2))
 
 '''
-URL = "http://api.wunderground.com/api/8025354e9e18f48c/history_20170720/q/pws:KCABERKE95.json"
 res = req.get(URL)
 json_data = res.json()
 '''
