@@ -5,6 +5,7 @@ import itertools
 import requests as req
 import requests
 from datetime import datetime
+import configparser
 #from influxdb import InfluxDBClient
 #from influxdb import DataFrameClient
 
@@ -24,7 +25,7 @@ def get_metrics_hourly(d, name="english"):
         else:
             tmp[key] = d[key]
     return tmp
-#send_url = 'https://docbrown-e3e50444.influxcloud.net:8086/write?u=python&p=pyth0n'
+
 send_url= 'http://localhost:8186/write'
 params = {
     'db': 'pyTestDB'
@@ -34,14 +35,12 @@ headers = {
     'Accept': 'text/plain'
 }
 method = 'POST'
-username='python'
-password='pyth0n'
 
 
 
 
-URL = "http://api.wunderground.com/api/8025354e9e18f48c/history_20170720/q/pws:KCABERKE67.json"
-#URL = "http://api.wunderground.com/api/8025354e9e18f48c/hourly/q/pws:KCABERKE95.json"
+
+URL = ['API_CREDZ']['API_URL']
 res = req.get(URL)
 json_data = res.json()
 for dictionary in json_data['history']['observations']:
